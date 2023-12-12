@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Create a Folder in Laravel 8</title>
+    <link rel="stylesheet" href="HW_3.css">
+</head>
+<body>
+
+<div class="main-container">
+    <section class="intro-container">
+        <h1 class="intro-heading"> Get Started With Machine Learning</h1>
+        <p>Learn the fundamentals of Machine Learning with this free course. Future-proof your career by adding ML skills to your toolkit — or build foundational ML skills to land a job in AI or Data Science.</p>
+        <button>Get Free Course</button>
+    </section>
+
+    <div class="text-container">
+        <p>While creating an application or working with files in your application, you will want to store a file in a folder. Sometimes there will be instances where the folder does not exist.</p>
+        <p>You want to create that folder during the process so the file can be stored without making the user resend the request.</p>
+        <p>You can create folder or directory by using the <code>File::makeDirectory()</code> function.</p>
+    </div>
+
+    <h2 class="sub-heading">Syntax</h2>
+    <div class="code-container">
+        <code>File::makeDirectory($path, $mode, $recursive, $force)</code>
+    </div>
+
+    <h2 class="sub-heading">Parameters</h2>
+    <p class="text-container">The <code>File::makeDirectory</code> function takes the following as input parameters:</p>
+    <ul>
+        <li><code class="highlight">$path</code>: This string represents the path of the directory we wish to create.</li>
+        <li><code class="highlight">$mode</code>: This is a four-digit integer that is used to set permissions for the directory.</li>
+        <li><code class="highlight">$recursive</code>: This is a boolean variable used to specify if the recursive mode is set.</li>
+        <li><code class="highlight">$force</code>: This is a boolean variable that, when set, lets you create a file in the profile path even when the directories in the path do not exist.</li>
+    </ul>
+
+    <h2 class="sub-heading">Return value</h2>
+    <p class="text-container">The function returns <code class="highlight">true</code> if the requested directory is created. Otherwise, it returns <code class="highlight">false</code>.</p>
+
+    <h2 class="sub-heading">Code</h2>
+    <div class="code-container">
+        <pre><code>public function createDirectory(Request $request)
+{
+    $path = public_path('upload/');
+
+    if (!File::isDirectory($path)){
+        File::makeDirectory($path, 0777, true, true);
+
+        // retry storing the file in newly created path.
+    }   
+}</code></pre>
+    </div>
+</div>
+
+</body>
+</html>
